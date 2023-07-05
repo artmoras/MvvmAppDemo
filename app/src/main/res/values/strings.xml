@@ -1,3 +1,13 @@
 <resources>
-    <string name="app_name">MvvmAppDemo</string>
+    <string name="app_name">RecyclerView</string>
+    <string name="addNote_button_description">Add a new note</string>
+    <string name="list_item_tv_title">Title</string>
+    <string name="list_item_tv_note">Note</string>
+    <string name="list_item_tv_date">Date</string>
+    <string name="add_note_hint_of_note">Start Typing</string>
+    <string name="add_note_hint_of_title">Title</string>
+    <string name="popup_menu_delete_button">Delete</string>
+    <string name="contentDescription_recyclerView">List of Notes</string>
+    <string name="contentDescription_addNote_backArrow">Go Back</string>
+    <string name="contentDescription_addNote_check">Ok</string>
 </resources>
