@@ -12,7 +12,7 @@
         android:theme="@style/Theme.MvvmAppDemo"
         tools:targetApi="31">
         <activity
-            android:name=".AddNoteActivity"
+            android:name=".activities.AddNoteActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

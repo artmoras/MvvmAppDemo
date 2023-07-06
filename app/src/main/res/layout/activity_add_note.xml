@@ -52,7 +52,7 @@
         android:layout_marginEnd="16dp"
         android:background="@null"
         android:ems="10"
-        android:inputType="textPersonName"
+        android:inputType="textMultiLine"
         android:hint="@string/add_note_hint_of_title"
         android:textSize="26sp"
         app:layout_constraintEnd_toEndOf="parent"
