@@ -14,4 +14,9 @@
     <color name="NoteColor4">#D9D55B</color>
     <color name="NoteColor5">#318BD1</color>
     <color name="NoteColor6">#D345D0</color>
+
+    <color name="app_theme">#009dff</color>
+    <color name="app_theme_light">#f6fbff</color>
+    <color name="edit_text_border">#03a9f4</color>
+    <color name="edit_text_background">#f6fbff</color>
 </resources>
