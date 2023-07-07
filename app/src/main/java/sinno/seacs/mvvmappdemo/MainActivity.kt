@@ -5,6 +5,7 @@ import android.content.Intent
 import android.os.Build
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.LinearLayout
 import android.widget.PopupMenu
@@ -13,11 +14,19 @@ import androidx.activity.result.contract.ActivityResultContracts
 import androidx.cardview.widget.CardView
 import androidx.lifecycle.ViewModelProvider
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.GlobalScope
+import kotlinx.coroutines.launch
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
 import sinno.seacs.mvvmappdemo.activities.AddNoteActivity
 import sinno.seacs.mvvmappdemo.adapters.NotesRecyclerViewAdapter
+import sinno.seacs.mvvmappdemo.api.Api
 import sinno.seacs.mvvmappdemo.database.Db
 import sinno.seacs.mvvmappdemo.databinding.ActivityMainBinding
 import sinno.seacs.mvvmappdemo.models.EntityNote
+import sinno.seacs.mvvmappdemo.utilities.BASE_URL
+import sinno.seacs.mvvmappdemo.utilities.TAG
 import sinno.seacs.mvvmappdemo.viewmodels.NoteViewModel
 
 class MainActivity : AppCompatActivity(), NotesRecyclerViewAdapter.NotesClickListener, PopupMenu.OnMenuItemClickListener {
@@ -56,6 +65,24 @@ class MainActivity : AppCompatActivity(), NotesRecyclerViewAdapter.NotesClickLis
             }
         }
         db = Db.getDatabase(this)
+
+        getAllComments()
+    }
+
+    private fun getAllComments(){
+        val api = Retrofit.Builder()
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build().create(Api::class.java)
+
+        GlobalScope.launch(Dispatchers.IO) {
+            val response = api.getComments()
+            if(response.isSuccessful){
+                for(comment in response.body()!!){
+                    Log.i(TAG, "getAllComments: ${comment.email}")
+                }
+            }
+        }
     }
 
     private fun initUI() {
